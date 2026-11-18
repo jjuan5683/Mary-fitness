@@ -1,5 +1,5 @@
 // Mi Rutina (Mary). Solo borra cachés que empiezan con 'rutina-': comparte dominio github.io con FitCoach.
-var C='rutina-v4';
+var C='rutina-v6';
 self.addEventListener('install',function(e){e.waitUntil(caches.open(C).then(function(c){return Promise.all(['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-512-maskable.png'])}).then(function(){return self.skipWaiting()}))});
 self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(ks){return Promise.all(ks.filter(function(k){return k.indexOf('rutina-')===0&&k!==C}).map(function(k){return caches.delete(k)}))}).then(function(){return self.clients.claim()}))});
 self.addEventListener('fetch',function(e){
